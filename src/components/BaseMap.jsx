@@ -52,7 +52,7 @@ export default class BaseMap extends Component {
                     {markers.map(p => 
                         <Marker key={p} position={p} />
                     )}
-                    {(markers.length >= 2) && 
+                    {(markers.length === 2) && 
                         <GeoJson coords={markers} />
                     }
                 </Map>
