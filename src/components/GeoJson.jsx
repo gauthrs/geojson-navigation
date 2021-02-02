@@ -7,25 +7,12 @@ export default class GeoJson extends Component {
         super(props);
 
         this.state = {
-            coords: [],
             dataCoord: []
         };
-    }
-    
-    render() {
-        const dataCoord = this.state.dataCoord;
-        return (
-            <>
-            {(dataCoord !== null) && 
-                <Polyline className={'leaflet-polyline'} positions={dataCoord} />
-            }
-            </>
-        );
     }
 
     componentDidMount() {
         const coords = this.props.coords;
-
         this.geoJsonData([coords[0]['lat'], coords[0]['lng']], [coords[1]['lat'], coords[1]['lng']]);
     }
 
@@ -58,5 +45,16 @@ export default class GeoJson extends Component {
             }, (err) => {
                 console.error(err);
             });
+    }
+    
+    render() {
+        const dataCoord = this.state.dataCoord;
+        return (
+            <>
+            {(dataCoord !== null) && 
+                <Polyline className={'leaflet-polyline'} positions={dataCoord} />
+            }
+            </>
+        );
     }
 }
